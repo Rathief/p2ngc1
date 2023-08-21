@@ -19,8 +19,8 @@ func (d Data) Validate() {
 	refVal := reflect.ValueOf(d)
 	for i := 0; i < refType.NumField(); i++ {
 		x := refType.Field(i)
-		stringVal := refVal.Field(i).Interface()
-		if x.Tag.Get("required") == "true" && stringVal == "" {
+		interfaceVal := refVal.Field(i).Interface()
+		if x.Tag.Get("required") == "true" && interfaceVal == "" {
 			fmt.Println("Field", x.Name, "is empty.")
 		} else {
 			fmt.Println("ok")
